@@ -4,7 +4,6 @@ import mvc.model.dto.AdminDTO;
 import mvc.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,6 +46,6 @@ public class AdminController {
     public String deleteAdmin(@ModelAttribute AdminDTO adminDTO){
         logger.warn("delete admin");
         adminService.deleteAdminById(adminDTO.getId());
-        return "index";
+        return "userpage";
     }
 }

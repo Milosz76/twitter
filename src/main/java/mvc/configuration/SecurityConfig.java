@@ -1,5 +1,7 @@
 package mvc.configuration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
@@ -16,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -24,10 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
+        logger.info("Calling configure() from SecurityConfig");
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/", "/index/")
+                .antMatchers(HttpMethod.GET, "/userpage/")
                     .hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
                 .antMatchers("/addadmin","/admins","/admin-success")
                     .hasAnyAuthority("ROLE_ADMIN")
@@ -43,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .usernameParameter("login")
                     .passwordParameter("password")
                     .loginProcessingUrl("/login-page")
-                    .defaultSuccessUrl("/index")
+                    .defaultSuccessUrl("/userpage")
                 .and()
                     .logout()
                     .logoutSuccessUrl("/login");

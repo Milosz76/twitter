@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Main user page</title>
+
+    <link th:href="@{'css/bootstrap/bootstrap.min.css'}" rel="stylesheet" >
+    <link th:href="@{'css/main.css'}" rel="stylesheet">
+    <link th:href="@{'css/userpage.css'}" rel="stylesheet">
+    <link th:href="@{'css/fontello.css'}" rel="stylesheet">
+    <link th:href="@{'https://fonts.gstatic.com'}" rel="preconnect">
+    <link th:href="@{'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap'}" rel="stylesheet">
+    <link th:href="@{'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css'}" rel="stylesheet">
+
+</head>
+<body class="container-fluid">
+    <div class="row justify-content-center">
+
+        <div class="col-1 col-md-2 ml-2 mr-1">
+            <header>
+                <div class="d-flex flex-column vh-100 justify-content-between align-items-end">
+                    <div class="my-1">
+                        <nav class="nav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item b-twi-ic">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0">
+                                                        <i class="align-top m-0 bi bi-twitter"></i>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-house-door"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Home</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-hash"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Explore</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-bell"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Notifications</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-envelope"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Messages</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-bookmark"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Bookmarks</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-list-ul"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Lists</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-person"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Profile</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item left-menu">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                                    <span class="d-block px-3 py-0 text-nowrap">
+                                                        <i class="align-top mr-3 bi bi-three-dots"></i>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">More</span>
+                                                    </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="my-1 flex-grow-1">
+                        <button class="tweet-button" type="button">
+                            <span class="d-none d-xl-inline font-weight-bold">Tweet</span>
+                            <i class="d-inline d-xl-none bi bi-pen-fill"></i>
+                        </button>
+                    </div>
+                    <div class="my-1">
+                        <button class="d-flex justify-content-center justify-content-xl-start mb-2 p-0 user-at-id" type="button">
+                            <i class="d-none d-xl-inline-block mx-2 bi bi-person-circle" style="font-size: 2.3rem;"></i>
+                            <span class="d-inline-block mt-2">
+                                    <span class="d-none d-xl-block m-0 p-0 text-left" style="font-size: 1rem; font-weight: bold;">user</span>
+                                    <span class="d-none d-xl-block m-0 p-0 text-left" style="font-size: 1rem; color: #808080;">@userID</span>
+                                </span>
+                            <i class="d-inline-block mx-0 mt-0 mb-2 ml-xl-4 mt-xl-2 bi bi-three-dots" style="font-size: 2rem;"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="h-100 mx-0 mx-md-2 p-1 p-md-3 div-out-main">
+            <main>
+                <div class="h-100">
+                    <br><br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum quis mi nec auctor. Sed eget arcu et lorem interdum semper quis sed justo. Morbi quis rhoncus ex, ut mollis ipsum. Cras risus orci, posuere in commodo non, fermentum sed leo. Pellentesque ornare leo tincidunt, pretium libero sed, consequat mauris. Morbi non est et velit pulvinar tristique sit amet eget tortor. Proin vestibulum felis non arcu ullamcorper, sit amet dictum ante sagittis. Fusce urna erat, lobortis eu lectus nec, facilisis hendrerit sem. Phasellus lacinia fermentum est a facilisis. Curabitur massa lorem, vulputate eget lorem vitae, consectetur ullamcorper purus. Pellentesque sem diam, volutpat vel mi quis, condimentum blandit sem. Sed ac ullamcorper massa.
+                    <br><br><br><br>
+                    Vivamus dictum justo libero, ac vestibulum magna finibus vel. Sed risus nulla, blandit id rutrum vitae, pulvinar at dolor. Proin lobortis risus lacus, id facilisis augue tincidunt sit amet. Morbi cursus consequat tortor. Duis eros mi, ultrices vel nibh eu, lacinia luctus augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Fusce scelerisque elementum venenatis.
+                    <br><br><br><br>
+                    Cras mollis magna sed lorem aliquam, ac aliquet metus dignissim. Pellentesque luctus dolor vitae venenatis scelerisque. Proin ac vehicula felis, vitae imperdiet purus. Cras rhoncus pulvinar risus sed ullamcorper. Vivamus id hendrerit velit. Donec imperdiet quis nunc non volutpat. In hac habitasse platea dictumst. Praesent ullamcorper, turpis eu accumsan lacinia, leo enim volutpat risus, vel accumsan sapien metus non ante. Phasellus pharetra mauris at urna dignissim, nec congue sem dictum. Duis lacinia enim magna, maximus elementum risus volutpat eget. Sed suscipit risus mi, ut condimentum nisl scelerisque nec. Cras vel tempor lectus. Aenean turpis eros, imperdiet a urna volutpat, aliquet lacinia enim. Vestibulum cursus laoreet eros eu aliquam. Nullam in nisi quis nisl ultrices tempus.
+                    <br><br>
+                    Fusce lobortis congue metus sit amet suscipit. Phasellus at risus rutrum, faucibus massa at, ultrices neque. Suspendisse ut interdum erat. Duis finibus sagittis turpis, nec tincidunt ipsum sodales dapibus. Pellentesque efficitur, ex in dapibus egestas, mi turpis aliquam quam, id pharetra massa lacus at tellus. Duis ut scelerisque mi. Curabitur id convallis justo, in vehicula arcu. Aliquam lobortis non est lacinia eleifend. Integer tincidunt at lectus vitae vehicula.
+                    <br><br>
+                </div>
+            </main>
+        </div>
+
+        <div class="d-none d-xl-block mx-2" style="width: 16rem;">
+            <aside>
+                <div class="d-flex flex-column justify-content-between vh-100">
+                    <div class="mt-3 div-search-input">
+                        <input type="search" placeholder="Search Twitter">
+                    </div>
+                    <div class="mt-3 flex-grow-1 like-trends">
+                        <div class="p-2" style="height: 3rem; border-bottom: solid 1px #95999c;">
+                            <label class="mb-0 mt-1 pl-2 font-weight-bold" style="font-size: 1.3rem;">You might like</label>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex-grow-1 like-trends">
+                        <div class="p-2" style="height: 3rem; border-bottom: solid 1px #95999c;">
+                            <label class="mb-0 mt-1 pl-2 font-weight-bold" style="font-size: 1.3rem;">Trends for you</label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+
+
+
+    <script th:src="@{'https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js'}" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script th:src="@{'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js'}" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<!--    <div class="it-s-a-content-before-main-look">-->
+<!--        <div align="right">-->
+<!--        <form method="POST" th:action="@{/logout}">-->
+<!--            <input type="submit" value="Logout"/>-->
+<!--        </form>-->
+<!--        </div>-->
+<!--        <h1 align="center">Welcome in Twitter App <input disabled th:value="${login}"> </h1>-->
+
+<!--        <form action="/users">-->
+<!--            <button class="btn btn-info" type="submit">Show users</button>-->
+<!--        </form>-->
+<!--        <p style="line-height: 1cm"></p>-->
+<!--        &lt;!&ndash;form action="/delete">-->
+<!--            <button class="btn btn-danger" type="submit">Usuwanie użytkownika</button&ndash;&gt;-->
+<!--        </form>-->
+<!--        <p style="line-height: 1cm"></p>-->
+<!--        <form action="/finduser">-->
+<!--            <button class="btn btn-info" type="submit">Find a user</button>-->
+<!--        </form>-->
+<!--        <p style = "line-height: 1cm"></p>-->
+<!--        <form action="/addadmin">-->
+<!--            <button class="btn btn-info">Add an admnistrator</button>-->
+<!--        </form>-->
+<!--        <p style = "line-height: 1cm"></p>-->
+<!--        <form action="/admins">-->
+<!--            <button class="btn btn-info">Admnistrators list</button>-->
+<!--        </form>-->
+<!--    </div>-->
+</body>
+</html>
