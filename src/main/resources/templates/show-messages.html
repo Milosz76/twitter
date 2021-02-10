@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding content by user:</title>
+    <link th:href="@{'css/main.css'}" rel="stylesheet">
+    <link th:href="@{'css/show-messages.css'}" rel="stylesheet">
+    <link th:href="@{'css/fontello.css'}" rel="stylesheet">
+    <link th:href="@{'https://fonts.gstatic.com'}" rel="preconnect">
+    <link th:href="@{'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap'}" rel="stylesheet">
+</head>
+<body>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Login</th>
+        <th scope="col">Date</th>
+        <th scope="col">Message</th>
+    </thead>
+    <tbody>
+    <tr th:each="usermessage : ${userAddMessage}">
+        <form action="@{/show-messages}" method="post", th:object="${usermessage}">
+            <td type="number" th:text="${usermessage.id}"/>
+            <td th:text="${usermessage.firstName}"/>
+            <td th:text="${usermessage.lastName}"/>
+            <td th:text="${usermessage.login}"/>
+            <td th:text="${usermessage.localDate}"/>
+            <td th:text="${usermessage.message}"/>
+            <td>
+                <input type="hidden" name="id" th:value="${usermessage.id}">
+                <button type="submit" class="btn btn-danger">Remove</button>
+            </td>
+        </form>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

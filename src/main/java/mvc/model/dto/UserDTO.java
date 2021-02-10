@@ -1,8 +1,11 @@
 package mvc.model.dto;
 
 import mvc.model.Role;
+import mvc.model.entity.Message;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDTO {
@@ -15,6 +18,7 @@ public class UserDTO {
     private String password;
     private LocalDate birthDate;
     private String role;
+    private List<Message> message = new ArrayList<>();
 
     public Long getId() {
         return id;

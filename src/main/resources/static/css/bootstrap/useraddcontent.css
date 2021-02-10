@@ -1,0 +1,46 @@
+.box{
+    margin-top: 10px;
+    background-color: #15202c;
+    width: 500px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date]{
+    width: 490px;
+    margin-left: 0;
+    background-color: #15202c;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 300;
+    display: block;
+}
+
+input[type=submit],
+input[type=reset]{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #008abe;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 45px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover{
+    background-color: #047ca9;
+}
+
+input[type=reset]:hover{
+    background-color: #047ca9;
+}

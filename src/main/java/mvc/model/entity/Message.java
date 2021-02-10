@@ -1,7 +1,9 @@
 package mvc.model.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "messages")
@@ -10,9 +12,11 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 400)
     private String message;
     private String uploadDir;
-    private LocalDateTime localDateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate localDate;
     @ManyToOne
     @JoinColumn(name = "user_id",
             referencedColumnName = "id"
@@ -45,12 +49,12 @@ public class Message {
         this.uploadDir = uploadDir;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDate getLocalDate() {
+        return localDate;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
     public User getUser() {

@@ -1,13 +1,15 @@
 package mvc.model.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class MessageDTO {
+
+    private UserDTO userDTO;
 
     private Long id;
     private String message;
     private String uploadDir;
-    private LocalDateTime localDateTime;
+    private LocalDate localDate;
 
     public Long getId() {
         return id;
@@ -33,11 +35,19 @@ public class MessageDTO {
         this.uploadDir = uploadDir;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDate getLocalDate() {
+        return localDate;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 }

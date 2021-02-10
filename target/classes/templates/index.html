@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcom in Twitter App</title>
-    <link rel="stylesheet" th:href="@{/static/css/main.css}"/>
-    <link rel="stylesheet" th:href="@{/static/css/start.css}"/>
-    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_big-stone.min.css">
+    <link th:href="@{'css/main.css'}" rel="stylesheet">
+    <link th:href="@{'css/index.css'}" rel="stylesheet">
+    <link th:href="@{'css/fontello.css'}" rel="stylesheet">
+    <link th:href="@{'https://fonts.gstatic.com'}" rel="preconnect">
+    <link th:href="@{'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap'}" rel="stylesheet">
 </head>
 <body>
 <div align="right">
@@ -19,10 +21,6 @@
     <button class="btn btn-info" type="submit">Show users</button>
 </form>
 <p style="line-height: 1cm"></p>
-<!--form action="/delete">
-    <button class="btn btn-danger" type="submit">Usuwanie użytkownika</button-->
-</form>
-<p style="line-height: 1cm"></p>
 <form action="/finduser">
     <button class="btn btn-info" type="submit">Find a user</button>
 </form>
@@ -33,6 +31,14 @@
 <p style = "line-height: 1cm"></p>
 <form action="/admins">
     <button class="btn btn-info">Admnistrators list</button>
+</form>
+<p style = "line-height: 1cm"></p>
+<form action="/useraddcontent">
+    <button class="btn btn-info">Add a message</button>
+</form>
+<p style = "line-height: 1cm"></p>
+<form action="/show-messages">
+    <button class="btn btn-info">Show the messages</button>
 </form>
 </body>
 </html>
