@@ -16,27 +16,28 @@
     <div class="i-tw"><i class="icon-twitter"></i></div>
     <div>
         <!--/*@thymesVar id="user" type="mvc.model.dto.UserDTO"*/-->
-        <form method="post" th:action="@{/registration}" th:object="${user}">
+        <form method="post" th:action="@{/registration}" th:object="${user}" enctype="multipart/form-data">
+
             <div class="create-your">
                 <h3>Create your account</h3>
             </div>
             <div class="box">
-                <label class="login-label" >Username
+                <label class="login-label" >Login name
                     <input type="text" th:field="*{login}" required/>
                 </label>
             </div>
             <div class="box">
-                <label class="login-label">Name
+                <label class="login-label">First name
                     <input type="text" th:field="*{firstName}" required/>
                 </label>
             </div>
             <div class="box">
-                <label class="login-label">Last name
+                <label class="login-label">Last name (Surname)
                     <input type="text" th:field="*{lastName}" required/>
                 </label>
             </div>
             <div class="box">
-                <label class="login-label">Mail
+                <label class="login-label">e-mail address
                     <input type="email" th:field="*{mail}" required/>
                 </label>
             </div>
@@ -48,6 +49,16 @@
             <div class="box">
                 <label class="login-label">Date of birth
                     <input type="date" th:field="*{birthDate}" />
+                </label>
+            </div>
+            <div class="enumBox">
+                <label class="login-label"><b>Role of the User:  </b>
+                <select th:field="*{{role}}">
+                    <option th:each="roleOpt : ${T(mvc.model.Role).values()}"
+                            th:value="${roleOpt}"
+                            th:text="${roleOpt}">
+                    </option>
+                </select>
                 </label>
             </div>
             <div class="button-reg">

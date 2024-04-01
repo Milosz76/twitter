@@ -1,29 +1,38 @@
 package mvc.model.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "messages")
-public class Message {
+public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 400)
+    @Column
+    @Size(max=350)
     private String message;
     private String uploadDir;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate localDate;
+    @DateTimeFormat(pattern = "dd-MMM-yyyy")
+    private String localDate;
     @ManyToOne
     @JoinColumn(name = "user_id",
             referencedColumnName = "id"
     )
     private User user;
 
-    public Message(){}
+    @ManyToOne
+    @JoinColumn(name = "deviceInformation_id",
+            referencedColumnName = "id"
+    )
+    private DeviceInformation deviceInformation;
+
+
+    public Message() {
+    }
 
     public Long getId() {
         return id;
@@ -49,11 +58,11 @@ public class Message {
         this.uploadDir = uploadDir;
     }
 
-    public LocalDate getLocalDate() {
+    public String getLocalDate() {
         return localDate;
     }
 
-    public void setLocalDate(LocalDate localDate) {
+    public void setLocalDate(String localDate) {
         this.localDate = localDate;
     }
 
@@ -63,5 +72,25 @@ public class Message {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public DeviceInformation getDeviceInformation() {
+        return deviceInformation;
+    }
+
+    public void setDeviceInformation(DeviceInformation deviceInformation) {
+        this.deviceInformation = deviceInformation;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                ", uploadDir='" + uploadDir + '\'' +
+                ", localDate='" + localDate + '\'' +
+                ", user=" + user +
+                ", deviceInformation=" + deviceInformation +
+                '}';
     }
 }

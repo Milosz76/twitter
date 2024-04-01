@@ -145,3 +145,19 @@ li{
     background-color: #203143;
     border-radius: 30px;
 }
+
+input[type=submit]{
+    color: #008abe;
+    font-size: 14px;
+    font-weight: bold;
+    background: none;
+    border: 1px solid #008abe;
+    border-radius: 20px;
+    width: 70px;
+    height: 40px;
+    cursor: pointer;
+}
+input[type=submit]:hover{
+    background-color: #213248;
+}
+

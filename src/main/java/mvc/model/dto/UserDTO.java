@@ -1,12 +1,9 @@
 package mvc.model.dto;
 
-import mvc.model.Role;
 import mvc.model.entity.Message;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 
 public class UserDTO {
 
@@ -14,11 +11,15 @@ public class UserDTO {
     private String login;
     private String firstName;
     private String lastName;
-    private String mail;
+    private String email;
     private String password;
-    private LocalDate birthDate;
+    private Date birthDate;
     private String role;
     private List<Message> message = new ArrayList<>();
+    private boolean isUserBanned;
+
+    public UserDTO() {
+    }
 
     public Long getId() {
         return id;
@@ -53,11 +54,11 @@ public class UserDTO {
     }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -68,11 +69,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -82,5 +83,21 @@ public class UserDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Message> getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<Message> message) {
+        this.message = message;
+    }
+
+    public boolean isUserBanned() {
+        return isUserBanned;
+    }
+
+    public void setUserBanned(boolean userBanned) {
+        isUserBanned = userBanned;
     }
 }

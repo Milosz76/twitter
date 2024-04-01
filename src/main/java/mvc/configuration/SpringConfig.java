@@ -10,11 +10,13 @@ import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import javax.sql.DataSource;
 
 import java.time.format.DateTimeFormatter;
 
@@ -29,6 +31,7 @@ public class SpringConfig extends WebMvcConfigurationSupport {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return NoOpPasswordEncoder.getInstance();
+//        return new BCryptPasswordEncoder();
     }
 
     //Resolve: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDate';

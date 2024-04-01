@@ -2,6 +2,8 @@ package mvc.controller;
 
 import mvc.model.dto.UserDTO;
 import mvc.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegistrationController {
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
 
-    public RegistrationController(final UserService userService) {
+    public RegistrationController(UserService userService) {
         this.userService = userService;
     }
 
@@ -24,8 +27,13 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     String addUser(@ModelAttribute UserDTO userDTO){
-        userService.create(userDTO);
-        return "successful-registration";
+        String email = userDTO.getMail();
+        boolean eMailAddress = userService.isEmailExistingInDatabase(email);
+        if(!eMailAddress){
+            userService.create(userDTO);
+            return "successful-registration";
+        } else {
+            return "failed-registration";
+        }
     }
-
 }

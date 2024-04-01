@@ -1,23 +1,21 @@
 package mvc.repository;
 
 import mvc.model.entity.User;
-
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
-public interface UserRepository{
+public interface UserRepository extends JpaRepository<User,Long> {
 
     List<User> findUserByLastName(@Param("lastName") String lastName);
 
-    List<User> findAll();
+    List<User> findUserByEmail(@Param("email") String email);
 
-    Optional<User> findById(Integer id);
+    List<User> findAll();
 
     User save(User user);
 

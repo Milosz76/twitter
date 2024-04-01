@@ -1,13 +1,22 @@
 package mvc.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Pattern;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+@NamedQueries({
+        @NamedQuery(name = User.USER_IS_EMAIL_REGISTERED, query = "SELECT u FROM User u WHERE u.email =: email"),
+        @NamedQuery(name = User.IS_USER_BANNED, query = "SELECT u FROM User u WHERE u.isUserBanned =: isUserBanned"),
+        @NamedQuery(name = User.FIND_USER_BY_LASTNAME, query = "SELECT u FROM User u WHERE lastName =: lastName")
+        })
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,17 +24,30 @@ public class User {
     private String login;
     private String firstName;
     private String lastName;
-    private String mail;
+    @Pattern(regexp = "[a-zA-Z]*[0-9]*.[a-zA-Z]*[0-9]*@[0-9]*[a-zA-Z]*[0-9]*.[a-zA-Z]*.[a-z]+")
+    @Column(unique = true)
+    private String email;
+    @Column(length = 250)
     private String password;
-    private LocalDate birthDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date birthDate;
     private String role;
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
-    private List<Message> message = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
+    private boolean isUserBanned = false;
 
-    public User(){}
+    public static final String USER_IS_EMAIL_REGISTERED = "isEmailRegisteredInDatabase";
+
+    public static final String IS_USER_BANNED = "isUserBanned";
+
+    public static final String FIND_USER_BY_LASTNAME = "findUserByLastName";
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -60,11 +82,11 @@ public class User {
     }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -75,11 +97,11 @@ public class User {
         this.password = password;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -92,10 +114,34 @@ public class User {
     }
 
     public List<Message> getMessage() {
-        return message;
+        return messages;
     }
 
-    public void setMessage(List<Message> message) {
-        this.message = message;
+    public void setMessage(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public boolean isUserBanned() {
+        return isUserBanned;
+    }
+
+    public void setUserBanned(boolean userBanned) {
+        isUserBanned = userBanned;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", birthDate=" + birthDate +
+                ", role='" + role + '\'' +
+                ", messages=" + messages +
+                ", isUserBanned=" + isUserBanned +
+                '}';
     }
 }

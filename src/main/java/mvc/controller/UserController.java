@@ -1,28 +1,28 @@
 package mvc.controller;
 
 import mvc.model.dto.UserDTO;
-
 import mvc.model.entity.User;
 import mvc.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.http.ResponseEntity;
-
+import javax.websocket.server.PathParam;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    @Autowired
     private UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
 
     @GetMapping("/finduser")
@@ -34,10 +34,17 @@ public class UserController {
     @GetMapping("/finduserbylastname")
     public ModelAndView findUserByLastName(@ModelAttribute UserDTO userDTO) {
         logger.warn("Find a user by a last name");
-        List<UserDTO> userDTOList = userService.findUserByLastName(userDTO.getLastName());
+        List<User> userDTOList = userService.findUserByLastName(userDTO.getLastName());
         return new ModelAndView("users", "userList", userDTOList);
     }
 
+    @GetMapping("/finduserbyemail")
+    public ModelAndView findUserByEmailAddress(@ModelAttribute UserDTO userDTO){
+        logger.warn("Find a user by the e-mail address");
+        String email = userDTO.getMail();
+        List<User> list = userService.isEmailRegisteredInDatabase(email);
+        return new ModelAndView("users", "userList", list);
+    }
 
     @GetMapping("/users")
     ResponseEntity<List<UserDTO>> findAllUsers() {
@@ -45,17 +52,17 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping("/users/{id}")
-    ResponseEntity<UserDTO> findUserById(@PathVariable Integer id) {
+    @PostMapping("/users/{id}")
+    public ResponseEntity<Optional<User>> findByUserID(@PathParam("id") Long id){
         logger.warn("Exposing specific user!");
-        return userService.getUserById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Optional<User> result = userService.findByid(id);
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/users")
+    @PreAuthorize("@securityService.hasPermission({'USER_ADD', 'ADMIN_ADD'})")
     ResponseEntity<User> createUser(@RequestBody UserDTO userDTO) {
-        logger.info("Created new user!");
+        logger.info("Creating the new user " + userDTO);
         User result = userService.create(userDTO);
         return ResponseEntity.created(URI.create("/" + result.getId())).build();
     }

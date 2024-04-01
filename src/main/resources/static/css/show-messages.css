@@ -1,0 +1,22 @@
+text-messages{
+    width: 490px;
+    margin-left: 0;
+    background-color: #15202c;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 300;
+    display: block;
+}
+
+.login-box{
+    background-color: #15202c;
+    height: 52px;
+    min-width: 163px;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+
+

@@ -1,15 +1,20 @@
 package mvc.model.dto;
 
-import java.time.LocalDate;
+
+import mvc.model.entity.DeviceInformation;
+import mvc.model.entity.User;
 
 public class MessageDTO {
-
-    private UserDTO userDTO;
 
     private Long id;
     private String message;
     private String uploadDir;
-    private LocalDate localDate;
+    private String localDate;
+    private UserDTO userDTO;
+    private DeviceInformationDTO deviceInformationDTO;
+
+    public MessageDTO() {
+    }
 
     public Long getId() {
         return id;
@@ -35,11 +40,11 @@ public class MessageDTO {
         this.uploadDir = uploadDir;
     }
 
-    public LocalDate getLocalDate() {
+    public String getLocalDate() {
         return localDate;
     }
 
-    public void setLocalDate(LocalDate localDate) {
+    public void setLocalDate(String localDate) {
         this.localDate = localDate;
     }
 
@@ -49,5 +54,13 @@ public class MessageDTO {
 
     public void setUserDTO(UserDTO userDTO) {
         this.userDTO = userDTO;
+    }
+
+    public DeviceInformationDTO getDeviceInformationDTO() {
+        return deviceInformationDTO;
+    }
+
+    public void setDeviceInformationDTO(DeviceInformationDTO deviceInformationDTO) {
+        this.deviceInformationDTO = deviceInformationDTO;
     }
 }

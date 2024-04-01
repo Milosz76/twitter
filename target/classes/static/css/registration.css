@@ -106,3 +106,9 @@ input[type=reset]:hover{
 .link:hover{
     text-decoration: underline ;
 }
+
+.enumBox{
+ font-size:24px;
+ font-color: white;
+ text-align: center;
+}

@@ -32,17 +32,15 @@
     </br>
  <table align="center">
      <tr>
-         <td>Input your text message:</td>
+         <td>Input your text message below:</td>
          </br>
      </tr>
      <tr>
          <td>
-             <textarea id="text" name="message" maxlength="400" placeholder="Text box. Max. lenght 400 characters." th:field="*{message}" rows="20" cols="50"/>
+             <textarea id="text" name="message" maxlength="350" placeholder="Text box. Max. lenght 350 characters."
+                       th:field="*{message}" rows="20" cols="50" enctype="multipart/form-data"/>
              </textarea>
          </td>
-     </tr>
-     <tr>
-         <td><p>Date: <input id="date" type="datetime" placeholder="yyyy-MM-dd" th:field="*{{localDate}}"/></p></td>
      </tr>
  </table>
 </div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find a user:</title>
+    <link th:href="@{'css/main.css'}" rel="stylesheet">
+    <link th:href="@{'css/finduser.css'}" rel="stylesheet">
+    <link th:href="@{'css/fontello.css'}" rel="stylesheet">
+    <link th:href="@{'https://fonts.gstatic.com'}" rel="preconnect">
+    <link th:href="@{'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap'}" rel="stylesheet">
+</head>
+<body>
+<h1>Find the user by a last name:</h1>
+<form th:action="@{/finduserbyemail}" method="get" th:object="${finduserbyemailaddress}">
+    <label for="inputEmailAddress">Enter e-mail address:</label>
+    <input type="text" id="inputEmailAddress" name="email">
+    <button type="submit">Find</button>
+</form>
+<div>
+    <h4 style="line-height: 1cm"></h4>
+    <form th:action="@{/userpage}">
+        <button type="submit">Back</button>
+    </form>
+</div>
+</body>
+</html>
