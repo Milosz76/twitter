@@ -1,9 +1,10 @@
 package mvc.model.dto;
 
 import mvc.model.entity.Message;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class UserDTO {
 
@@ -15,8 +16,11 @@ public class UserDTO {
     private String password;
     private Date birthDate;
     private String role;
-    private List<Message> message = new ArrayList<>();
+    private Set<String> roles;
+    private List<Message> message;
     private boolean isUserBanned;
+    private Date accountCreated;
+    private Date accountUpdated;
 
     public UserDTO() {
     }
@@ -53,11 +57,11 @@ public class UserDTO {
         this.lastName = lastName;
     }
 
-    public String getMail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setMail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -99,5 +103,29 @@ public class UserDTO {
 
     public void setUserBanned(boolean userBanned) {
         isUserBanned = userBanned;
+    }
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public Date getAccountCreated() {
+        return accountCreated;
+    }
+
+    public void setAccountCreated(Date accountCreated) {
+        this.accountCreated = accountCreated;
+    }
+
+    public Date getAccountUpdated() {
+        return accountUpdated;
+    }
+
+    public void setAccountUpdated(Date accountUpdated) {
+        this.accountUpdated = accountUpdated;
     }
 }

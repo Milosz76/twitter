@@ -1,5 +1,5 @@
 text-messages{
-    width: 490px;
+    width: 100px;
     margin-left: 0;
     background-color: #15202c;
     border: none;
@@ -18,5 +18,69 @@ text-messages{
     border-radius: 5px;
 }
 
+td.column1{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
 
+td.column2{
+    padding-left: 20px;
+    height: 55px;
+    width: 400px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+
+td.column3{
+    padding-left: 20px;
+    height: 55px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+
+td.column4{
+    padding-left: 20px;
+    height: 55px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+
+td.column5{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+
+td.column6{
+    padding-left: 20px;
+    height: 70px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
 

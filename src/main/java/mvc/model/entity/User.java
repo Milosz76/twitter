@@ -1,21 +1,15 @@
 package mvc.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.*;
-import javax.validation.constraints.Pattern;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@NamedQueries({
-        @NamedQuery(name = User.USER_IS_EMAIL_REGISTERED, query = "SELECT u FROM User u WHERE u.email =: email"),
-        @NamedQuery(name = User.IS_USER_BANNED, query = "SELECT u FROM User u WHERE u.isUserBanned =: isUserBanned"),
-        @NamedQuery(name = User.FIND_USER_BY_LASTNAME, query = "SELECT u FROM User u WHERE lastName =: lastName")
-        })
 public class User implements Serializable {
 
     @Id
@@ -32,19 +26,20 @@ public class User implements Serializable {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthDate;
     private String role;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))
+    private Set<String> roles;
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
-    private List<Message> messages = new ArrayList<>();
-    private boolean isUserBanned = false;
+    private List<Message> messages;
+    @Column(name = "is_banned")
+    private boolean isUserBanned;
+    private Date accountCreated;
+    private Date accountUpdated;
 
-    public static final String USER_IS_EMAIL_REGISTERED = "isEmailRegisteredInDatabase";
-
-    public static final String IS_USER_BANNED = "isUserBanned";
-
-    public static final String FIND_USER_BY_LASTNAME = "findUserByLastName";
 
     public User() {
     }
@@ -81,11 +76,11 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getMail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setMail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -113,11 +108,11 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public List<Message> getMessage() {
+    public List<Message> getMessages() {
         return messages;
     }
 
-    public void setMessage(List<Message> messages) {
+    public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
 
@@ -127,6 +122,30 @@ public class User implements Serializable {
 
     public void setUserBanned(boolean userBanned) {
         isUserBanned = userBanned;
+    }
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public Date getAccountCreated() {
+        return accountCreated;
+    }
+
+    public void setAccountCreated(Date accountCreated) {
+        this.accountCreated = accountCreated;
+    }
+
+    public Date getAccountUpdated() {
+        return accountUpdated;
+    }
+
+    public void setAccountUpdated(Date accountUpdated) {
+        this.accountUpdated = accountUpdated;
     }
 
     @Override
@@ -140,8 +159,11 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", birthDate=" + birthDate +
                 ", role='" + role + '\'' +
+                ", roles=" + roles +
                 ", messages=" + messages +
                 ", isUserBanned=" + isUserBanned +
+                ", accountCreated=" + accountCreated +
+                ", accountUpdated=" + accountUpdated +
                 '}';
     }
 }

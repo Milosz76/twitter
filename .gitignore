@@ -1,1 +1,6 @@
 target
+.DSstore
+*env
+.git
+*.iml
+.idea/

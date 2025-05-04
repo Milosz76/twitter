@@ -1,11 +1,9 @@
 package mvc.model.dto;
 
-
-
 public class DeviceInformationDTO {
 
     private Long id;
-    private String name;
+    private String ipAddress;
     private MessageDTO messageDTO;
 
 
@@ -20,11 +18,19 @@ public class DeviceInformationDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public MessageDTO getMessageDTO() {
+        return messageDTO;
+    }
+
+    public void setMessageDTO(MessageDTO messageDTO) {
+        this.messageDTO = messageDTO;
     }
 }

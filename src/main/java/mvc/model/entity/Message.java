@@ -1,9 +1,9 @@
 package mvc.model.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import javax.persistence.*;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "messages")
@@ -16,15 +16,15 @@ public class Message implements Serializable {
     @Size(max=350)
     private String message;
     private String uploadDir;
-    @DateTimeFormat(pattern = "dd-MMM-yyyy")
-    private String localDate;
+    @Column(name = "local_date")
+    private Date localDate;
     @ManyToOne
     @JoinColumn(name = "user_id",
             referencedColumnName = "id"
     )
     private User user;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "deviceInformation_id",
             referencedColumnName = "id"
     )
@@ -58,11 +58,11 @@ public class Message implements Serializable {
         this.uploadDir = uploadDir;
     }
 
-    public String getLocalDate() {
+    public Date getLocalDate() {
         return localDate;
     }
 
-    public void setLocalDate(String localDate) {
+    public void setLocalDate(Date localDate) {
         this.localDate = localDate;
     }
 

@@ -15,7 +15,6 @@
 <main>
     <div class="i-tw"><i class="icon-twitter"></i></div>
     <div>
-        <!--/*@thymesVar id="user" type="mvc.model.dto.UserDTO"*/-->
         <form method="post" th:action="@{/registration}" th:object="${user}" enctype="multipart/form-data">
 
             <div class="create-your">
@@ -38,7 +37,7 @@
             </div>
             <div class="box">
                 <label class="login-label">e-mail address
-                    <input type="email" th:field="*{mail}" required/>
+                    <input type="email" th:field="*{email}" required/>
                 </label>
             </div>
             <div class="box">

@@ -11,21 +11,28 @@
 </head>
 <body>
 <table align="center" class="table" name="text-messages">
+    <thead class="thead-dark">
+    <tr>
+        <th class="column1" scope="col">Id:</th>
+        <th class="column1" scope="col">User login:</th>
+        <th class="column2" scope="col">Message:</th>
+        <th class="column3" scope="col">Link to web page:</th>
+        <th class="column4" scope="col">Date:</th>
+    </tr>
+    </thead>
     <tbody>
-    <form action="/show-messages" th:object="${message}" method="get">
-    <tr>
-            <td><p>Photo....</p></td>
-            <td><b>First Name and Last Name</b></td>
-            <td type="text" th:text="${message1.localDate}">Date of the msg...</td>
+    <tr th:each="message : ${messageObj}">
+        <td class="column1" th:text="${message.id}"></td>
+        <td class="column1" th:text="${message.user != null ? message.user.login : 'N/A'}"></td>
+        <td class="column2" th:text="${message.message}"></td>
+        <td class="column3" th:text="${message.uploadDir != null ? message.uploadDir : 'No upload'}"></td>
+        <td class="column4" th:text="${#dates.format(message.localDate, 'yyyy-MM-dd HH:mm')}"></td>
     </tr>
-    <tr>
-        <td></td>
-        <td width="450px" height="200px" type="text" th:text="${}">User's Message</td>
-    </tr>
-    </form>
     </tbody>
+
 </table>
-<div style="position: relative; left: 200px; bottom: 60px" name="login-box" align="left">
+<div align="center">
+    <h4 style="line-height: 1cm"></h4>
     <form th:action="@{/userpage}">
         <button type="submit">Back</button>
     </form>

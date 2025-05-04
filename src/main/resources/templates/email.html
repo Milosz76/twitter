@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find user by the e-mail address:</title>
+
+    <link th:href="@{'css/main.css'}" rel="stylesheet">
+    <link th:href="@{'css/successful-registration.css'}" rel="stylesheet">
+    <link th:href="@{'css/fontello.css'}" rel="stylesheet">
+    <link th:href="@{'https://fonts.gstatic.com'}" rel="preconnect">
+    <link th:href="@{'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap'}" rel="stylesheet">
+</head>
+<body>
+<h1>Find the user by the e-mail:</h1>
+
+<div>
+    <form method="get" th:action="@{/finduserbyemail}">
+        <label for="email">Enter e-mail address:</label>
+        <input type="text" id="email" name="email">
+        <p>
+            <button type="reset">Reset</button>
+        </p>
+        <p>
+            <button type="submit">Find User by e-mail</button>
+        </p>
+    </form>
+</div>
+
+<div>
+    <h4 style="line-height: 1cm" th:if="${user != null}" th:text="${'User found: ' + user.firstName + ' ' + user.lastName}"></h4>
+    <h4 style="line-height: 1cm" th:if="${user == null}">User not found.</h4>
+    <form th:action="@{/userpage}">
+        <button type="submit">Back</button>
+    </form>
+</div>
+</body>
+</html>

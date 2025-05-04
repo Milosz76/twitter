@@ -1,6 +1,6 @@
 package mvc.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -9,8 +9,9 @@ public class DeviceInformation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @ManyToOne
+    @Column(name="ip_address")
+    private String ipAddress;
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "message_id",
                 referencedColumnName = "id")
     private Message message;
@@ -26,12 +27,12 @@ public class DeviceInformation implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
     public Message getMessage() {
@@ -46,7 +47,7 @@ public class DeviceInformation implements Serializable {
     public String toString() {
         return "DeviceInformation{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", ipAddress='" + ipAddress + '\'' +
                 ", message=" + message +
                 '}';
     }

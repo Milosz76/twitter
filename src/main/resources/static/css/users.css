@@ -34,3 +34,75 @@ input[type=submit]:hover{
 input[type=reset]:hover{
     background-color: #047ca9;
 }
+
+td.number{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td.login{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td.firstName{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td.lastName{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td.email{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td.role{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td.banned{
+    padding-left: 20px;
+    height: 55px;
+    width: 30px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    border-right: 1px solid transparent;
+    word-wrap:break-word
+}
+td{
+  border-block: 4px dotted blue;
+  background-color: #9fe0ed;
+  font-weight: bold;
+  font: 15px Arial, sans-serif;
+  text-align: center;
+  vertical-align: middle;
+}

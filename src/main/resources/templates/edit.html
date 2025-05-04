@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="title"><i class="fas fa-user-edit"></i> Edit Profile</h1>
+
+    <form class="form" method="post" action="/update">
+        <input type="hidden" name="id" th:value="${user.id}" />
+
+        <div>
+            <label for="login">Login</label>
+            <input type="text" id="login" name="login" th:value="${user.login}" required />
+        </div>
+
+        <div>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" th:value="${user.firstName}" required />
+        </div>
+
+        <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" th:value="${user.lastName}" required />
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" th:value="${user.email}" required />
+        </div>
+
+        <div>
+            <label for="birthDate">Birth Date</label>
+            <input type="date" id="birthDate" name="birthDate"
+                   th:value="${#dates.format(user.birthDate, 'yyyy-MM-dd')}" required />
+        </div>
+
+        <div>
+            <label for="role">Main Role</label>
+            <input type="text" id="role" name="role" th:value="${user.role}" disabled/>
+        </div>
+
+        <div>
+            <label for="roles">All Roles (comma separated)</label>
+            <input type="text" id="roles" name="rolesString"
+                   th:value="${#strings.listJoin(user.roles, ', ')}" disabled/>
+        </div>
+
+        <div>
+            <label for="password">New Password</label>
+            <input type="password" id="password" name="password" />
+        </div>
+
+        <div>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" />
+        </div>
+
+        <div>
+            <label for="userBanned">Banned Status</label>
+            <input type="checkbox" id="userBanned" name="userBanned" th:checked="${user.isUserBanned}" disabled />
+        </div>
+
+        <button type="submit" class="btn">
+            <i class="fas fa-save"></i> Save Changes
+        </button>
+    </form>
+
+    <form method="post" th:action="@{/users/delete/{id}(id=${user.id})}">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account?')">
+            <i class="fas fa-trash-alt"></i> Delete Account
+        </button>
+    </form>
+
+
+    <a class="link" href="/userpage"><i class="fas fa-arrow-left"></i> Back to User Page</a>
+</div>
+</body>
+</html>

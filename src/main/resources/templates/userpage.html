@@ -82,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item left-menu">
-                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" href="#">
+                                    <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" th:href="@{/edit}">
                                                     <span class="d-block px-3 py-0 text-nowrap">
                                                         <i class="align-top mr-3 bi bi-person"></i>
                                                         <span class="d-none d-xl-inline-block m-0 pt-1">Profile</span>
@@ -102,30 +102,34 @@
                                     <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" th:href="finduser">
                                                     <span class="d-block px-3 py-0 text-nowrap">
                                                         <i class="align-top mr-3 bi bi-three-dots"></i>
-                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Find a User</span>
+                                                        <span class="d-none d-xl-inline-block m-0 pt-1">Find the User</span>
                                                     </span>
                                     </a>
                                 </li>
                                 </form>
+                                <li>
+                                    <form action="/findemail" method="get">
+                                        <div class="my-1 flex-grow-1">
+                                            <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" th:href="findemail">
+                                                <span class="d-none d-xl-inline font-weight-bold">Find user by the e-mail address</span>
+                                                <i class="d-inline d-xl-none bi bi-pen-fill"></i>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li>
+                                <form action="/useraddcontent" method="get">
+                                    <div class="my-1 flex-grow-1">
+                                        <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" th:href="useraddcontent">
+                                            <span class="d-none d-xl-inline font-weight-bold"> + Add message +</span>
+                                            <i class="d-inline d-xl-none bi bi-pen-fill"></i>
+                                        </a>
+                                    </div>
+                                </form>
+                                </li>
                             </ul>
                         </nav>
                     </div>
-                    <form action="/finduserbyemailaddress" method="get">
-                        <div class="my-1 flex-grow-1">
-                            <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" th:href="finduserbyemailaddress">
-                                <span class="d-none d-xl-inline font-weight-bold">Tweet</span>
-                                <i class="d-inline d-xl-none bi bi-pen-fill"></i>
-                            </a>
-                        </div>
-                    </form>
-                    <form action="/useraddcontent" method="get">
-                    <div class="my-1 flex-grow-1">
-                        <a class="d-flex nav-link w-100 h-100 text-light text-decoration-none" th:href="useraddcontent">
-                            <span class="d-none d-xl-inline font-weight-bold">Tweet</span>
-                            <i class="d-inline d-xl-none bi bi-pen-fill"></i>
-                        </a>
-                    </div>
-                    </form>
                     <div class="my-1">
                         <button class="d-flex justify-content-center justify-content-xl-start mb-2 p-0 user-at-id" type="button">
                             <i class="d-none d-xl-inline-block mx-2 bi bi-person-circle" style="font-size: 2.3rem;"></i>

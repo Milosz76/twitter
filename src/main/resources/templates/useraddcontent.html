@@ -15,17 +15,14 @@
 <h3 style="position: fixed; right:480px; top:40px"><input disabled th:value="${login}"></h3>
 <p style="line-height: 40px"></p>
 
-<form th:action="@{/useraddcontent}" method="post" th:object="${userAddMessage}">
+<form th:action="@{/useraddcontent}" method="post">
 <table align="center">
     <tr>
         <td style="position: fixed; left:480px; top:90px">
-            <form th:action="@{/userpage}">
-                <button type="submit">Back</button>
-            </form>
+            <a th:href="@{/userpage}">
+                <button type="button">Back</button>
+            </a>
         </td>
-       <td style="position:fixed; right:480px; top:75px">
-           <p><input type="submit" value="Tweet"/></p>
-       </td>
     </tr>
 </table>
 <div>
@@ -38,8 +35,19 @@
      <tr>
          <td>
              <textarea id="text" name="message" maxlength="350" placeholder="Text box. Max. lenght 350 characters."
-                       th:field="*{message}" rows="20" cols="50" enctype="multipart/form-data"/>
+                       field="*{message}" rows="20" cols="50" enctype="multipart/form-data"/>
              </textarea>
+         </td>
+     </tr>
+     <tr>
+         <td>
+             <label for="uploadDir">Insert your link here:</label>
+             <input type="text" id="uploadDir" name="uploadDir">
+         </td>
+     </tr>
+     <tr>
+         <td>
+             <p><input type="submit" value="Tweet"/></p>
          </td>
      </tr>
  </table>

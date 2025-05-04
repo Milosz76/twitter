@@ -1,0 +1,178 @@
+/* Import Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+/* Reset + base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #14171a;
+    padding: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #f5f8fa;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+/* Title */
+.title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #1da1f2;
+}
+
+/* Form styles */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"] {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    color: #657786;
+}
+
+.btn {
+    background-color: #1da1f2;
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0d8ddb;
+}
+
+.btn-danger {
+    background-color: #e0245e;
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c2184c;
+}
+
+/* Link style */
+.link {
+    display: inline-block;
+    color: #1da1f2;
+    text-decoration: none;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Icons inside buttons */
+button i {
+    margin-right: 6px;
+}
+
+/* Dark mode (automatic) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #15202b;
+        color: #e1e8ed;
+    }
+
+    .container {
+        background: #192734;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"] {
+        background: #253341;
+        border: 1px solid #38444d;
+        color: #fff;
+    }
+
+    label {
+        color: #8899a6;
+    }
+
+    .btn {
+        background-color: #1da1f2;
+    }
+
+    .btn-danger {
+        background-color: #e0245e;
+    }
+
+    .link {
+        color: #1da1f2;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    input,
+    button {
+        font-size: 0.95rem;
+    }
+}
+.btn-danger {
+    background-color: #e0245e; /* Czerwony jak Twitter */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c81e4d;
+}

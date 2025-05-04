@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DeviceInformationRepository extends JpaRepository<DeviceInformation,Long> {
-
-    DeviceInformation save(DeviceInformation device);
 }

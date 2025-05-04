@@ -15,17 +15,23 @@
     <thead class="thead-dark">
     <tr>
         <th scope="col">Id</th>
+        <th scope="col">Login</th>
         <th scope="col">First name:</th>
         <th scope="col">Last name:</th>
-        <th scope="col">Login:</th>
+        <th scope="col">E-mail address:</th>
+        <th scope="col">Role:</th>
+        <th scope="col">Is user banned:</th>
     </thead>
     <tbody>
-    <tr th:each="allUsers : ${userList}">
-        <form action="/deleteuser" method="post", th:object="${allUsers}">
-            <td type="number" th:text="${allUsers.id}"/>
-            <td th:text="${allUsers.firstName}"/>
-            <td th:text="${allUsers.lastName}"/>
-            <td th:text="${allUsers.login}"/>
+    <tr th:each="user:${userList}">
+        <form action="/deleteuser" method="post">
+            <td th:type="number" th:text="${user.id}"/>
+            <td  class="login" th:type="text" th:text="${user.login}"/>
+            <td class="firstName" th:type="text" th:text="${user.firstName}"/>
+            <td class="lastName" th:type="text" th:text="${user.lastName}"/>
+            <td class="email" th:type="text" th:text="${user.email}"/>
+            <td class="role" th:type="text" th:text="${user.role}"/>
+            <td class="benned" th:type="text" th:text="${user.isUserBanned}"/>
         </form>
     </tr>
     </tbody>
